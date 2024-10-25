@@ -28,18 +28,16 @@ module purge
 cp /mnt/lustre/groups/ERTH0904/hycom/setupHyCOM .
 source setupHyCOM
 ```
+The last command must be done every time after you log in (also on a computational node), if you want to run HYCOM or postprocess results. If you normally have other modules loaded, it is probably a good idea to clear those before loading the new ones (in case there are conflicts).
 
-The last command must be done every time after you log in (also on a computational node), if you want to run HYCOM or postprocess results.
-
-If you normally have other modules loaded, it is probably a good idea to clear those before loading the new ones (in case there are conflicts).
-
-
-2. Cloning the model code
+## 2. Cloning the model code
 Go to your home directory and the folder you want to have the code in.
 use this command to get the code:
-cd
+```
+cd ~
 git clone https://github.com/nansencenter/NERSC-HYCOM-CICE
 cd NERSC-HYCOM-CICE/
+```
 to checkout the branch (normally we use the branch called ‘develop’, but some changes needed to run on CHPC are awaiting review):
 git checkout issue_hycom_standalone
 git branch 
@@ -56,12 +54,14 @@ conda env create -f hycom_env.yml
 conda activate hycomenv
 
 And everybody will have to install the python routines that comes with code:
+Bwe one dir up before running: 
+```
 pip install --user NERSC-HYCOM-CICE/pythonlibs/gridxsec/
 pip install --user NERSC-HYCOM-CICE/pythonlibs/abfile/
 pip install --user NERSC-HYCOM-CICE/pythonlibs/modelgrid/
 pip install --user NERSC-HYCOM-CICE/pythonlibs/modeltools/
 If you use python to plot your results, the abfile package will be useful to read the model output.
-
+```
 This step should (in principle) only need to be done only once, but must be redone if you change the python version.
 4. Compiling MSCPROGS
 MSCPROG contains a number of routines for preparing forcing files and postprocessing data developed at NERSC.  Instructions on how to compile can be found here.
