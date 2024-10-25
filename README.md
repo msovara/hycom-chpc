@@ -15,24 +15,23 @@ https://doi.org/10.1029/2017JC013602
 https://doi.org/10.1029/2019JC015365
 https://doi.org/10.1080/1755876X.2008.11020093
 
-Preparing HYCOM for running on CHPC
+## Preparing HYCOM for running on CHPC
 
 ```
 To login to CHPC machine:
 ssh -X username@scp.chpc.ac.za
-
-1 Loading modules:
+```
+## 1. Loading modules:
 In order to compile and run the model, I had to load the following modules:
+```
 module purge
 cp /mnt/lustre/groups/ERTH0904/hycom/setupHyCOM .
 source setupHyCOM
 ```
+
 The last command must be done every time after you log in (also on a computational node), if you want to run HYCOM or postprocess results.
 
 If you normally have other modules loaded, it is probably a good idea to clear those before loading the new ones (in case there are conflicts).
-
-```
-
 
 
 2. Cloning the model code
